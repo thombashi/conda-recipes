@@ -1,0 +1,44 @@
+{% set name = "pathvalidate" %}
+{% set version = "1.1.1" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
+
+source:
+  git_url: "https://github.com/thombashi/{{ name }}.git"
+  git_rev: "v{{ version }}"
+  git_depth: 1
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools >=38.3.0
+  run:
+    - python
+
+test:
+  imports:
+    - pathvalidate
+  requires:
+    - faker
+    - pytest
+
+about:
+  home: "https://github.com/thombashi/{{ name }}"
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "pathvalidate is a Python library to sanitize/validate a string such as filenames/file-paths/etc."
+  doc_url: "https://{{ name }}.rtfd.io/"
+  dev_url: "https://github.com/thombashi/{{ name }}"
+
+extra:
+  recipe-maintainers:
+    - thombashi
