@@ -1,14 +1,16 @@
 {% set name = "pathvalidate" %}
-{% set version = "2.2.0" %}
+{% set version = "2.3.0" %}
 
 package:
   name: "{{ name|lower }}"
   version: "{{ version }}"
 
 source:
-  git_url: "https://github.com/thombashi/{{ name }}.git"
-  git_rev: "v{{ version }}"
-  git_depth: 1
+  #git_url: "https://github.com/thombashi/{{ name }}.git"
+  #git_rev: "v{{ version }}"
+  #git_depth: 1
+  url: https://github.com/thombashi/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: d64d1d2d6f2df501b8e3a330f269170ccb67f078cf4fd11de865b5fc83377a05
 
 build:
   noarch: python
@@ -17,9 +19,8 @@ build:
 
 requirements:
   host:
-    - pip
     - python
-    - setuptools >=38.3.0
+    - pip
   run:
     - python
 
